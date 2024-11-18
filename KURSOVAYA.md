@@ -93,7 +93,7 @@
 
 Эта база данных предназначена для хранения информации о книгах в домашней библиотеке и вывода информации об их статусе и источнике получения.
 
-Она будет содержать не только печатные книги, но и журналы, электронные книги и аудиокниги.
+БД будет содержать не только печатные книги, но и журналы, электронные книги и аудиокниги.
 
 Ее разработка будет вестись в PostgreSQL в ОС Linux Ubuntu.
 
@@ -183,6 +183,11 @@
 	?
 
 
+
+
+
+
+
 2. **Инфологическая (концептуальная) модель базы данных.**
 
 
@@ -213,11 +218,11 @@ TypeBook, PropBook, Source, Events.
 
 
 
-	
 
 *ER-модель.*
 
 Нотация Мартина: сущность изображается прямоугольником, внутри которого указано ее имя жирным шрифтом и список ее атрибутов (идентифицирующий атрибут подчеркнут), а связь – линией, название которой располагается над ней и ее вид в месте соединения с сущностью определяет кардинальность связи («воронья лапка» – М, «крест»– 1).
+
 
 
 ![Картинка1] (https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B2%202024-11-12%2012-43-557777.png)
@@ -225,10 +230,12 @@ TypeBook, PropBook, Source, Events.
 
 
 
+
+
 3. **Логическая структура БД.**
 
 
-<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B2%202024-11-12%2013-38-2611111.png>
+![Картинка2] <https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B2%202024-11-12%2013-38-2611111.png>
 
 
 
@@ -246,6 +253,7 @@ TypeBook, PropBook, Source, Events.
 	| magazine | BOOLEAN    | Журнал            |
 	| audio    | BOOLEAN    | Аудиокнига        |
 	| ebook    | BOOLEAN    | Электронная книга |
+
 
 
 
@@ -287,9 +295,11 @@ TypeBook, PropBook, Source, Events.
 	| Поле    | Тип данных  | Комментарий                                        |
 	| ------- | ----------- | -------------------------------------------------- |
 	| id_book | INT         | Ключ                                               |
-	| status  | ENUM        | Статус книги <- выбирается один параметр из списка |
+	| status  | ENUM        | Статус книги                                       | <- выбирается один параметр из списка
 	| date    | DATE        | Дата регистрации статуса                           |
 	| who     | VARCHAR(50) | Кто дал книгу или кому она отдана                  |
+
+
 
 
 
@@ -297,10 +307,21 @@ TypeBook, PropBook, Source, Events.
 5. **Реализация проекта в среде конкретной СУБД.**
 
     *5.1. Создание запросов.*
+	
 
+	Были созданы таблицы:
 
+	\dt <- просмотр всех таблиц в БД.
 
+	<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/tables.png
 
+	
+
+	В таблице propbook были введены данные о книгах:
+
+	SELECT * FROM propbook; <- вывод всего, что есть в таблице propbook.
+
+	<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/propbook.png
 
 
 
@@ -309,8 +330,16 @@ TypeBook, PropBook, Source, Events.
 
     *5.2. Назначение прав доступа.*
 
-    Вначале был создан суперпользователь “vitai”, который является создателем БД и обладает всеми правами на ее изменения. Ему присвоен пароль.
 
+    Вначале был создан пользователь “vitai”, который обладает всеми правами на изменение БД под названием vitai. Ему присвоен пароль.
+
+	<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/users.png
+
+	CREATE USER vitai WITH PASSWORD '80224';
+
+
+
+	Сама БД была создана суперпользователем postgres (по умолчанию все БД создаются им).
 
 
 
@@ -321,6 +350,11 @@ TypeBook, PropBook, Source, Events.
     *5.3. Создание индексов.*
 
 
+	В таблице propbook был создан индекс:
+
+	SELECT * FROM pg_catalog.pg_indexes WHERE tablename = 'propbook'; <- вывод всех индексов в таблице propbook.
+
+	<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/indexes_propbook.png
 
 
 
@@ -336,9 +370,15 @@ TypeBook, PropBook, Source, Events.
 
 	Первый способ – создание бэкапа всех баз данных на сервере.
 
+
+
 	Второй способ – создание бэкапа только нашей БД.
 
-	Третий способ – копирование всех команд, проводимых с БД и их хранение в архиве с паролем.
+
+
+	? Третий способ – копирование всех команд, проводимых с БД и их хранение в архиве с паролем.
+
+
 
 
 
@@ -351,6 +391,8 @@ TypeBook, PropBook, Source, Events.
 Также эта БД выводит информацию о том, какие книги взяты в долг, а какие нужно сдать в обычную библиотеку.
 
 В целом, БД помогает структурировать всю информацию в домашней библиотеке и быстро находить то, что нужно.
+
+
 
 
 
@@ -369,11 +411,13 @@ TypeBook, PropBook, Source, Events.
 
 
 
+
+
 # Приложения.
 
 
 
-<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B2%202024-11-12%2012-43-557777.png>
+<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B2%202024-11-12%2012-43-557777.png
 
 
-<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B2%202024-11-12%2013-38-2611111.png>
+<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B2%202024-11-12%2013-38-2611111.png
