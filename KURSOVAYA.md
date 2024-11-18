@@ -220,7 +220,7 @@ TypeBook, PropBook, Source, Events.
 Нотация Мартина: сущность изображается прямоугольником, внутри которого указано ее имя жирным шрифтом и список ее атрибутов (идентифицирующий атрибут подчеркнут), а связь – линией, название которой располагается над ней и ее вид в месте соединения с сущностью определяет кардинальность связи («воронья лапка» – М, «крест»– 1).
 
 
-<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B2%202024-11-12%2012-43-557777.png>
+![Картинка1] (https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B2%202024-11-12%2012-43-557777.png)
 
 
 
@@ -406,12 +406,12 @@ VARCHAR(50)
 # Список использованных источников:
 
 
-<https://studfile.net/preview/6070312/page:2/>
-<https://eduherald.ru/ru/article/view?id=20048>
-<https://multiurok.ru/index.php/files/prakticheskaia-rabota-sozdanie-bd-biblioteka.html>
-<https://studfile.net/preview/5910972/page:6/>  
-<https://datafinder.ru/products/postgresql-tipy-dannyh>
-<https://app.creately.com/d/LMe2s1AKgFN/edit>
+<https://studfile.net/preview/6070312/page:2/
+<https://eduherald.ru/ru/article/view?id=20048
+<https://multiurok.ru/index.php/files/prakticheskaia-rabota-sozdanie-bd-biblioteka.html
+<https://studfile.net/preview/5910972/page:6/
+<https://datafinder.ru/products/postgresql-tipy-dannyh
+<https://app.creately.com/d/LMe2s1AKgFN/edit
 
 
 
