@@ -235,109 +235,61 @@ TypeBook, PropBook, Source, Events.
 
 
 4. **Физическая структура базы данных.**
+   
 
-	Таблица 1 — Структура таблицы TypeBook:
-
-Поле
-Тип данных
-Комментарий
-id_book
-INT
-Ключ
-book
-BOOLEAN
-Бумажная книга
-magazine
-BOOLEAN
-Журнал
-audio
-BOOLEAN
-Аудиокнига
-ebook
-BOOLEAN
-Электронная книга
-
-	Таблица 2 — Структура таблицы PropBook:
-
-Поле
-Тип данных
-Комментарий
-id_book
-INT
-Ключ
-name
-VARCHAR(100)
-Название
-author
-VARCHAR(100)
-Автор(ы)
-year
-INT
-Год выпуска
-publisher
-VARCHAR(80)
-Издательство
-pages
-INT
-Количество страниц
-genre
-VARCHAR(50)
-Жанр книги
-isbn
-VARCHAR(20)
-Идентификационный код книги
+	*Таблица 1 — Структура таблицы TypeBook:*
 
 
+	| Поле     | Тип данных | Комментарий       |
+	| -------- | ---------- | ------------------|
+	| id_book  | INT        | Ключ              |
+	| magazine | BOOLEAN    | Журнал            |
+	| audio    | BOOLEAN    | Аудиокнига        |
+	| ebook    | BOOLEAN    | Электронная книга |
+
+
+
+	*Таблица 2 — Структура таблицы PropBook:*
+
+
+	| Поле      | Тип данных   | Комментарий                   |
+	| --------- | ------------ | ----------------------------- |
+	| id_book   | INT          | Ключ                          |
+	| name      | VARCHAR(100) | Название                      |
+	| author    | VARCHAR(100) | Автор(ы)                      |
+	| year      | INT          | Год выпуска                   |
+	| publisher | VARCHAR(80)  | Издательство                  |
+	| pages     | INT          | Количество страниц            |
+	| genre     | VARCHAR(50)  | Жанр книги                    |
+	| isbn      | VARCHAR(20)  | Идентификационный номер книги |
 
 	
-	Таблица 3 — Структура таблицы Source:
 
-Поле
-Тип данных
-Комментарий
-id_book
-INT
-Ключ
-library
-VARCHAR(80)
-Из библиотеки
-bookloan
-VARCHAR(80)
-Одолжено
-gifted
-VARCHAR(80)
-Получено в подарок
-buyed
-VARCHAR(80)
-Куплено
-found
-VARCHAR(80)
-Найдено
+
+	*Таблица 3 — Структура таблицы Source:*
+
+
+	| Поле     | Тип данных  | Комментарий        |
+	| -------- | ----------- | ------------------ |
+	| id_book  | INT         | Ключ               |
+	| library  | VARCHAR(80) | Из библиотеки      |
+	| bookloan | VARCHAR(80) | Одолжено           |
+	| gifted   | VARCHAR(80) | Получено в подарок |
+	| buyed    | VARCHAR(80) | Куплено            |
+	| found    | VARCHAR(80) | Найдено            |
 
 
 
 
+	*Таблица 4 — Структура таблицы Events:*
 
 
-
-	Таблица 4 — Структура таблицы Events:
-
-
-Поле
-Тип данных
-Комментарий
-id_book
-INT
-Ключ
-status
-ENUM („keeping“, „reading“, „receiving“, „giveaway“)
-Статус книги (выбирается один параметр из списка)
-date
-DATE
-Дата регистрации статуса
-who
-VARCHAR(50)
-Кто дал книгу или кому она отдана
+	| Поле    | Тип данных  | Комментарий                                        |
+	| ------- | ----------- | -------------------------------------------------- |
+	| id_book | INT         | Ключ                                               |
+	| status  | ENUM        | Статус книги <- выбирается один параметр из списка |
+	| date    | DATE        | Дата регистрации статуса                           |
+	| who     | VARCHAR(50) | Кто дал книгу или кому она отдана                  |
 
 
 
@@ -422,7 +374,6 @@ VARCHAR(50)
 
 
 <https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B2%202024-11-12%2012-43-557777.png>
-
 
 
 <https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B2%202024-11-12%2013-38-2611111.png>
