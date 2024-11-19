@@ -115,7 +115,13 @@
 	Предметная область этой базы данных – домашняя книжная библиотека, которая содержит бумажные (печатные), журналы, электронные книги и аудиокниги.
 
 
-	Функции решаемых задач …
+	Функции решаемых задач: 
+
+	- вывод информации о статусе книги ("хранится", "в процессе чтения", "получена", "отдана"); 
+	- вывод источника получения книги;
+	- вывод всех книг, хранящихся в домашней библиотеке;
+	- вывод всех книг одного типа, будь то журнал или электронная книга.
+	- вывод книги по нужным параметрам.
 
 
 
@@ -176,19 +182,23 @@
 
 
 
-    1.4. Ограничения предметной области (если таковые имеются).
-	?
+    *Ограничения предметной области (если таковые имеются).*
 
-    1.5. Взаимодействие с другими программами.
-	?
+	Ограничения отсутствуют.
 
 
 
+    *Взаимодействие с другими программами:*
+
+	При помощи макросов.
 
 
 
 
-2. **Инфологическая (концептуальная) модель базы данных.**
+
+
+
+1. **Инфологическая (концептуальная) модель базы данных.**
 
 
 Таблицы-справочники: TypeBook, PropBook, Source.
@@ -331,11 +341,16 @@ TypeBook, PropBook, Source, Events.
     *5.2. Назначение прав доступа.*
 
 
-    Вначале был создан пользователь “vitai”, который обладает всеми правами на изменение БД под названием vitai. Ему присвоен пароль.
+    Вначале был создан пользователь “vitai”, ему присвоен пароль:
 
 	<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/users.png
 
 	CREATE USER vitai WITH PASSWORD '80224';
+
+
+	Ему были присвоены все права на БД:
+
+	GRANT ALL PRIVILEGES ON TABLE vitai TO vitai;
 
 
 
@@ -367,16 +382,21 @@ TypeBook, PropBook, Source, Events.
 
 	Резервное копирование проводилось несколькими способами.
 
-
-	Первый способ – создание бэкапа всех баз данных на сервере.
-
+	(Все нижеперечисленные команды выполнялись от суперпользователя postgres).
 
 
-	Второй способ – создание бэкапа только нашей БД.
+	Первый способ – создание бэкапа всех баз данных на сервере:
+
+	pg_dumpall > all.sql;
 
 
 
-	? Третий способ – копирование всех команд, проводимых с БД и их хранение в архиве с паролем.
+	Второй способ – создание бэкапа отдельной таблицы БД (в данном случае propbook):
+
+	pg_dump -t propbook vitai > /tmp/propbook.dump;
+
+
+
 
 
 
@@ -406,7 +426,8 @@ TypeBook, PropBook, Source, Events.
 <https://studfile.net/preview/5910972/page:6/
 <https://datafinder.ru/products/postgresql-tipy-dannyh
 <https://app.creately.com/d/LMe2s1AKgFN/edit
-
+<https://selectel.ru/blog/tutorials/how-to-create-user-postgre/
+<https://help.reg.ru/support/servery-vps/oblachnyye-servery/rabota-s-serverom/rezervnoye-kopirovaniye-i-vosstanovleniye-baz-dannykh-postgresql#2
 
 
 
@@ -419,5 +440,14 @@ TypeBook, PropBook, Source, Events.
 
 <https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B2%202024-11-12%2012-43-557777.png
 
-
 <https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%20%D0%B2%202024-11-12%2013-38-2611111.png
+
+
+
+<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/tables.png
+
+<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/propbook.png
+
+<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/users.png
+
+<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/indexes_propbook.png
