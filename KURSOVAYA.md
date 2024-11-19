@@ -118,7 +118,7 @@
 	Функции решаемых задач: 
 
 	- вывод информации о статусе книги ("хранится", "в процессе чтения", "получена", "отдана"); 
-	- вывод источника получения книги;
+	- вывод источника получения книги (из обычной библиотеки, куплена, одолжена или получена в подарок);
 	- вывод всех книг, хранящихся в домашней библиотеке;
 	- вывод всех книг одного типа, будь то журнал или электронная книга.
 	- вывод книги по нужным параметрам.
@@ -334,6 +334,34 @@ TypeBook, PropBook, Source, Events.
 	<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/propbook.png
 
 
+
+	
+	SELECT * FROM propbook WHERE year = 2022;  <- вывод всех книг с определенного года выпуска (в данном случае 2022-й).
+
+	<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/year.png
+
+
+
+
+	SELECT * FROM propbook WHERE pages < 300;  < - вывод книг, в которых количество страниц меньше 300.
+
+	<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/pages.png
+
+
+
+
+	SELECT * FROM events WHERE status = 'reading'; < - вывод списка книг, которые имеют статус «в процессе чтения».
+
+	SELECT * FROM events WHERE status = 'reсeiving'; < - вывод списка книг, которые имеют статус «получена».
+
+	SELECT * FROM events WHERE status = 'keeping'; < - вывод списка книг, которые имеют статус «хранится».
+
+	SELECT * FROM events WHERE status = 'giveaway'; < - вывод списка книг, которые имеют статус «отдана».
+
+
+	SELECT * FROM Source WHERE id_book = *id определенной книги*; < - вывод источников определенной книги.
+
+	SELECT * FROM TypeBook WHERE id_book = *id определенной книги*; < - вывод типов определенной книги.
 
 
 
