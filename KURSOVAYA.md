@@ -68,7 +68,7 @@
 
 Руководитель работы __________________ <ins> И. В. Пунгин </ins>
 
-Задание принял к исполнению _______________________________ <ins> Инициалы и Фамилия студента
+Задание принял(а) к исполнению _______________________________ <ins> В. Д. Хмеленко </ins>
 
 
 
@@ -184,7 +184,11 @@
 
     *Ограничения предметной области (если таковые имеются).*
 
-	Ограничения отсутствуют.
+	1. По году издания книги (не старше 1900 года и не новее текущего года).
+	2. По количеству страниц книги 
+		(не 152 страница из 151 существующих, 
+		минимум 10-20 страниц, 
+		максимум 5000 страниц).
 
 
 
@@ -211,20 +215,23 @@
 TypeBook, PropBook, Source, Events.
 
 
+Книги имеют несколько типов издания: обычная (бумажная) книга, электронная книга, аудиокнига.
+
+
 *Атрибуты объектов:*
 
-- у TypeBook: id_book, book, magazine, audio, ebook.
-- у PropBook: name, author, year, publisher, pages, genre, isbn.
-- у Source: id_book, library, bookloan, gifted, buyed, found.
-- у Events: id_book, status (включает keeping, reading, receiving, giveaway), date, who.
+- TypeBook: id_book, book, magazine, audio, ebook.
+- PropBook: name, author, year, publisher, pages, genre, isbn.
+- Source: id_book, library, bookloan, gifted, buyed, found.
+- Events: id_book, status (включает keeping, reading, receiving, giveaway), date, who.
 
 
 
 *Отношения между объектами:*
 
-- Между TypeBook и PropBook – один-к-одному (унитарное отношение).
-- Между PropBook и Source – один-к-одному (унитарное отношение).
-- Между PropBook и Events – один-к-одному (унитарное отношение).
+- Между TypeBook и PropBook: один-к-одному (унитарное отношение).
+- Между PropBook и Source: один-к-одному (унитарное отношение).
+- Между PropBook и Events: один-к-одному (унитарное отношение).
 
 
 
@@ -413,13 +420,13 @@ TypeBook, PropBook, Source, Events.
 	(Все нижеперечисленные команды выполнялись от суперпользователя postgres).
 
 
-	Первый способ – создание бэкапа всех баз данных на сервере:
+	Первый способ: создание бэкапа всех баз данных на сервере:
 
 	pg_dumpall > all.sql;
 
 
 
-	Второй способ – создание бэкапа отдельной таблицы БД (в данном случае propbook):
+	Второй способ: создание бэкапа отдельной таблицы БД (в данном случае propbook):
 
 	pg_dump -t propbook vitai > /tmp/propbook.dump;
 
