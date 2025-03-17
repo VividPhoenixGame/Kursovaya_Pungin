@@ -264,7 +264,7 @@
 	| год                | INT          |                               |
 	| издатель           | VARCHAR(80)  |                               |
 	| количество_страниц | INT          |                               |
-	| жанры              | VARCHAR(50)  |                               |
+	| жанры              | VARCHAR(100) |                               |
 	| isbn               | VARCHAR(20)  | Идентификационный номер книги |
 
 
@@ -313,30 +313,6 @@
 
     *5.1. Создание запросов.*
 	
-
-	Были созданы таблицы:
-
-	\dt <- просмотр всех таблиц в БД.
-
-	<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/tables.png
-
-	
-
-	В таблице propbook были введены данные о книгах:
-
-	SELECT * FROM propbook; <- вывод всего, что есть в таблице propbook.
-
-	<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/propbook.png
-
-
-
-	
-	SELECT * FROM propbook WHERE year = 2022;  <- вывод всех книг с определенного года выпуска (в данном случае 2022-й).
-
-	<https://github.com/VividPhoenixGame/Kursovaya_Pungin/blob/main/year.png
-
-
-
 
 	SELECT * FROM События WHERE id_книги = 3;
 
