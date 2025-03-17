@@ -1,0 +1,25 @@
+Связи в таблицах:
+
+
+ALTER TABLE Книги ADD UNIQUE (id_книги);
+
+ALTER TABLE События ADD UNIQUE (id_книги);
+
+ALTER TABLE События
+ADD FOREIGN KEY (id_книги) REFERENCES Книги (id_книги);
+
+ALTER TABLE Тип_книги
+ADD FOREIGN KEY (id_книги) REFERENCES Книги (id_книги);
+
+
+
+ALTER TABLE Источники ADD UNIQUE (id_источника);
+
+ALTER TABLE События
+ADD FOREIGN KEY (id_источника) REFERENCES Источники (id_источника);
+
+
+SELECT * FROM pg_catalog.pg_indexes WHERE tablename = 'Книги'; <- вывод всех индексов в таблице Книги.
+SELECT * FROM pg_catalog.pg_indexes WHERE tablename = 'События';
+SELECT * FROM pg_catalog.pg_indexes WHERE tablename = 'Источники';
+SELECT * FROM pg_catalog.pg_indexes WHERE tablename = 'Тип_книги';
