@@ -3,14 +3,16 @@
 
 ALTER TABLE Книги ADD UNIQUE (id_книги);
 
-ALTER TABLE События ADD UNIQUE (id_книги);
+ALTER TABLE События ADD UNIQUE (id_события);
 
 ALTER TABLE События
 ADD FOREIGN KEY (id_книги) REFERENCES Книги (id_книги);
 
-ALTER TABLE Тип_книги
-ADD FOREIGN KEY (id_книги) REFERENCES Книги (id_книги);
 
+ALTER TABLE Тип_книги ADD UNIQUE (id_типа_книги);
+
+ALTER TABLE Книги
+ADD FOREIGN KEY (id_типа_книги) REFERENCES Тип_книги (id_типа_книги);
 
 
 ALTER TABLE Источники ADD UNIQUE (id_источника);
