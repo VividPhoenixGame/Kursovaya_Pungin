@@ -13,9 +13,10 @@ id_книги INT PRIMARY KEY,
 количество_страниц INT, 
 жанры VARCHAR(100), 
 isbn VARCHAR(20), 
-id_типа_книги INT);
+id_типа_книги INT, 
+количество INT);
 
-CREATE TABLE Тип_книги (id_типа_книги INT PRIMARY KEY, тип VARCHAR(50), количество INT);
+CREATE TABLE Тип_книги (id_типа_книги INT PRIMARY KEY, тип VARCHAR(50));
 
 CREATE TABLE События (
 id_события INT PRIMARY KEY, 
